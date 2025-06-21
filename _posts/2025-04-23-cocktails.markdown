@@ -2,6 +2,7 @@
 layout: post
 title:  "Cocktails"
 date:   2025-04-23 13:09:07 +0200
+permalink: /cocktails.html
 ---
 
 ## Aperol Spritz
