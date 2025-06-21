@@ -27,10 +27,12 @@
       <h1 class="w-full text-white text-3xl md:text-4xl lg:text-5xl font-bold mt-12">{{ page.title }}</h1>
     </div>
   </header>
-  <div id="sidebar" class="hidden lg:block fixed sticky left-8 top-10 p-6 h-0 max-w-1/5">
-    <strong class="pb-4">Inhoud</strong>
+  <div class="lg:fixed lg:sticky lg:left-8 lg:top-10 p-6 lg:h-0 max-w-1/5 mb-12">
+    <button id="toggleSidebar" class="mb-4 w-full lg:w-auto text-center font-bold">Inhoud <div id="caret" class="inline-block ml-2 lg:hidden">▼</div></button>
+    <div id="sidebar" class="max-h-0 transition-[max-height] duration-500 lg:max-h-none overflow-hidden lg:overflow-none">
+    </div>
   </div>
-  <div class="max-w-4xl min-h-screen mx-2 lg:mx-auto p-4 pt-6 md:p-8 bg-white rounded-xl -mt-20 prose md:prose-md">
+  <div class="max-w-4xl min-h-screen mx-2 lg:mx-auto pl-10 md:pl-4 p-4 pt-6 md:p-8 bg-white rounded-xl -mt-20 prose md:prose-md">
     {{ content }}
   </div>
   </div>
@@ -83,6 +85,15 @@
     }, options);
 
     headings.forEach(heading => observer.observe(heading));
+  });
+  const btn = document.getElementById('toggleSidebar');
+  const content = document.getElementById('sidebar');
+  const caret = document.getElementById('caret');
+
+  btn.addEventListener('click', () => {
+    content.classList.toggle('max-h-0');
+    content.classList.toggle('max-h-96');
+    caret.classList.toggle('rotate-180');
   });
 
 </script>
